@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "842660656774",
+    "project_id": "dicoding-voicenote",
+    "storage_bucket": "dicoding-voicenote.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:842660656774:android:0b6e5b52f57e2cfb918307",
+        "android_client_info": {
+          "package_name": "com.voiceapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKD8ZsLrGGxv2jWhtXq4nUJq9Xyp6tzvg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

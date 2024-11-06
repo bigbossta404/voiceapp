@@ -1,4 +1,4 @@
-package com.example.dicoding_voiceapp
+package com.voiceapp
 
 import io.flutter.embedding.android.FlutterActivity
 

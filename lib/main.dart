@@ -1,5 +1,7 @@
-import 'package:dicoding_voiceapp/core/router_config.dart';
+import 'package:dicoding_voiceapp/core/app_router.dart';
+import 'package:dicoding_voiceapp/features/auth/bloc/auth_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 /*
  * Copyright (c) 2024 Rd. Fakhri Fadhlan Dantiano.
  *
@@ -25,7 +27,20 @@ import 'package:flutter/material.dart';
  * https://dribbble.com/shots/24364001-Recognotes-Mobile-App-Design
  */
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
+
+  // FirebaseAuth.instance.authStateChanges().listen((User? user) {
+  //   if (user == null) {
+  //     print('User is currently signed out!');
+  //   } else {
+  //     print('User is signed in!');
+  //   }
+  // });
+
   runApp(const MainApp());
 }
 
@@ -33,10 +48,13 @@ class MainApp extends StatelessWidget {
   const MainApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      theme: ThemeData(fontFamily: 'Lato'),
-      title: 'Dicoding VoiceApp',
-      routerConfig: AppRouterConfig.router,
+    return BlocProvider<AuthBloc>(
+      create: (context) => AuthBloc(),
+      child: MaterialApp.router(
+        theme: ThemeData(fontFamily: 'Lato'),
+        title: 'Dicoding VoiceApp',
+        routerConfig: AppRouterConfig.router,
+      ),
     );
   }
 }

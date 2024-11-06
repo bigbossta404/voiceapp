@@ -4,19 +4,21 @@ import 'package:flutter/material.dart';
 class CustomTextForm extends StatelessWidget {
   final bool obscureText;
   final String hintText;
+  final String? initialValue;
   final FormFieldValidator<String> validator;
   final VoidCallback? visibilityPass;
   final bool? visibilityTogle;
-  final FormFieldSetter<String> onSaved;
+  final TextEditingController controller;
 
   const CustomTextForm({
     super.key,
     this.obscureText = false,
     this.visibilityPass,
     this.visibilityTogle,
+    this.initialValue,
+    required this.controller,
     required this.hintText,
     required this.validator,
-    required this.onSaved,
   });
 
   @override
@@ -24,6 +26,8 @@ class CustomTextForm extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.fromLTRB(5, 10, 5, 10),
       child: TextFormField(
+        controller: controller,
+        initialValue: initialValue,
         decoration: InputDecoration(
           focusedBorder: OutlineInputBorder(
             borderSide: const BorderSide(
@@ -66,7 +70,6 @@ class CustomTextForm extends StatelessWidget {
         ),
         obscureText: visibilityTogle ?? false,
         validator: validator,
-        onSaved: onSaved,
       ),
     );
   }

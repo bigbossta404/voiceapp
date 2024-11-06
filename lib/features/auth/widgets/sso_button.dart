@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../core/app_color.dart';
+import '../../../core/app_color.dart';
 
 class SsoButton extends StatelessWidget {
   final String svgAsset;

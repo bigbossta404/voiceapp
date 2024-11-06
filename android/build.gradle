@@ -1,7 +1,18 @@
+buildscript {
+    repositories {
+        google() // Required for Google Services
+        mavenCentral() // Required for other dependencies
+    }
+    dependencies {
+        classpath 'com.google.gms:google-services:4.3.8' // Google Services classpath
+        classpath 'com.android.tools.build:gradle:7.2.1' // Add Android Gradle plugin if not already included
+    }
+}
+
 allprojects {
     repositories {
-        google()
-        mavenCentral()
+        google() // Required for Google Services
+        mavenCentral() // Required for other dependencies
     }
 }
 
@@ -9,6 +20,7 @@ rootProject.buildDir = "../build"
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
 }
+
 subprojects {
     project.evaluationDependsOn(":app")
 }

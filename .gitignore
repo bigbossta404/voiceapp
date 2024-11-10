@@ -41,3 +41,7 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Igniore related with firebase configuration
+lib/services/*
+GoogleService-Info.plist

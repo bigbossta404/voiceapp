@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
@@ -10,11 +9,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AuthEventLogin>((event, emit) async {
       emit(AuthStateLoading());
       if (event.email == 'aingmaung@mail.com') {
-        await Future.delayed(const Duration(seconds: 2), () {
-          emit(AuthStateLogin());
-        });
+        // await Future.delayed(const Duration(seconds: 2), () {
+        emit(AuthStateLogin());
+        // });
       } else {
-        emit(const AuthStateError('Gagal login'));
+        emit(AuthStateError('Gagal login'));
       }
       // try {
       //   // await auth.signInWithEmailAndPassword(email: event.email, password: event.password);

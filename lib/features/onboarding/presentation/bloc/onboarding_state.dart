@@ -1,9 +1,5 @@
 part of 'onboarding_bloc.dart';
 
-abstract class OnboardingState extends Equatable {
-  const OnboardingState();  
+abstract class OnboardingState {}
 
-  @override
-  List<Object> get props => [];
-}
 class OnboardingInitial extends OnboardingState {}

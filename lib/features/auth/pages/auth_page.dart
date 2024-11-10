@@ -61,7 +61,6 @@ class _AuthPageState extends State<AuthPage> {
             child: Center(
               child: SingleChildScrollView(
                 child: Container(
-                  margin: const EdgeInsets.only(top: 50),
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   width: MediaQuery.sizeOf(context).width,
                   child: Column(
@@ -71,6 +70,10 @@ class _AuthPageState extends State<AuthPage> {
                     children: [
                       Column(
                         children: [
+                          Image.asset(
+                            'assets/images/icons/voiceapp.png',
+                            width: 150,
+                          ),
                           const Text(
                             'Login Account',
                             style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),

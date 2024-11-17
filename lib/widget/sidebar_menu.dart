@@ -1,4 +1,3 @@
-import 'package:dicoding_voiceapp/core/app_router.dart';
 import 'package:dicoding_voiceapp/helper/router_index.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -66,7 +65,7 @@ class SideBarMenu extends StatelessWidget {
             title: const Text('History'),
             onTap: () {
               Navigator.pop(context);
-              // context.goNamed(RouterIndex);
+              context.pushNamed(RouterIndex.history);
             },
           ),
           ListTile(

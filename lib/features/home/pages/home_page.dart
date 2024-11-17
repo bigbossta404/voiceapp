@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage> {
               color: AppColors.surfaceColor,
               child: SingleChildScrollView(
                   child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: MediaQuery.viewPaddingOf(context).top),
                 child: Column(
                   children: [
                     // Menu and Profile

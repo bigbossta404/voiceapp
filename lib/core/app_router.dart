@@ -1,4 +1,5 @@
 import 'package:dicoding_voiceapp/features/auth/pages/auth_page.dart';
+import 'package:dicoding_voiceapp/features/history/pages/history_page.dart';
 import 'package:go_router/go_router.dart';
 
 import '../features/auth/pages/register_page.dart';
@@ -25,12 +26,20 @@ class AppRouterConfig {
         },
       ),
       GoRoute(
-        name: RouterIndex.homePage,
-        path: '/${RouterIndex.homePage}',
-        builder: (context, GoRouterState state) {
-          return const HomePage();
-        },
-      ),
+          name: RouterIndex.homePage,
+          path: '/${RouterIndex.homePage}',
+          builder: (context, GoRouterState state) {
+            return const HomePage();
+          },
+          routes: [
+            GoRoute(
+              name: RouterIndex.history,
+              path: RouterIndex.history,
+              builder: (context, GoRouterState state) {
+                return const HistoryPage();
+              },
+            )
+          ]),
     ],
   );
 }

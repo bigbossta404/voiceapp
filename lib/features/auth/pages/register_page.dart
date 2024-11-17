@@ -40,18 +40,7 @@ class _RegisterPageState extends State<RegisterPage> {
         backgroundColor: AppColors.surfaceColor,
         body: SafeArea(
           child: BlocListener<AuthBloc, AuthState>(
-            listener: (context, state) {
-              print(state);
-              // if (state is AuthStateError) {
-              //   print(state.errorHandler);
-              // }
-              // if (state is AuthStateCreate) {
-              //   ScaffoldMessenger.of(context).showSnackBar(CustomSnackbar(context, 'success', state.message ?? 'Error'));
-              // }
-              // if (state is AuthStateError) {
-              //   ScaffoldMessenger.of(context).showSnackBar(CustomSnackbar(context, 'error', state.errorHandler ?? 'Error to create account'));
-              // }
-            },
+            listener: (context, state) {},
             child: Center(
               child: SingleChildScrollView(
                 child: Container(

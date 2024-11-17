@@ -32,6 +32,7 @@ class _AuthPageState extends State<AuthPage> {
   void initState() {
     // TODO: implement initState
     _emailController.text = 'aingmaung@mail.com';
+    _passController.text = 'passwordasal';
     super.initState();
   }
 

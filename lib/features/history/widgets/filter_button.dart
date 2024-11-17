@@ -5,9 +5,9 @@ class FilterButton extends StatelessWidget {
   final int index;
   final String label;
   // final VoidCallback callBack;
-  final Bloc homeBloc;
+  final Bloc historyBloc;
 
-  const FilterButton({super.key, required this.index, required this.label, required this.homeBloc});
+  const FilterButton({super.key, required this.index, required this.label, required this.historyBloc});
 
   @override
   Widget build(BuildContext context) {

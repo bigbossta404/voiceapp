@@ -1,4 +1,6 @@
 // ignore_for_file: prefer_const_constructors
+import 'dart:io';
+
 import 'package:dicoding_voiceapp/core/app_color.dart';
 import 'package:dicoding_voiceapp/features/auth/bloc/auth_bloc.dart';
 import 'package:dicoding_voiceapp/features/home/bloc/home_bloc.dart';
@@ -7,6 +9,8 @@ import 'package:dicoding_voiceapp/helper/router_index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../../widget/sidebar_menu.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,6 +22,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final _focusNode = FocusNode();
   final _searchController = TextEditingController();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   List listLabel = ['All', 'Transcribed', 'In-Progress', 'Cancelled'];
 
   @override
@@ -27,7 +33,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _searchController.dispose();
     super.dispose();
   }
@@ -58,6 +63,8 @@ class _HomePageState extends State<HomePage> {
         child: BlocProvider(
           create: (context) => HomeBloc(),
           child: Scaffold(
+            key: _scaffoldKey,
+            drawer: SideBarMenu(),
             body: SafeArea(
                 child: Container(
               width: double.infinity,
@@ -65,20 +72,25 @@ class _HomePageState extends State<HomePage> {
               color: AppColors.surfaceColor,
               child: SingleChildScrollView(
                   child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: Platform.isAndroid ? MediaQuery.viewPaddingOf(context).top : 10),
                 child: Column(
                   children: [
                     // Menu and Profile
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          decoration: BoxDecoration(border: Border.all(width: 0.5), borderRadius: BorderRadius.circular(10)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Icon(
-                              Icons.menu,
-                              size: 30,
+                        InkWell(
+                          onTap: () {
+                            _scaffoldKey.currentState?.openDrawer();
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(border: Border.all(width: 0.5), borderRadius: BorderRadius.circular(10)),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Icon(
+                                Icons.menu,
+                                size: 30,
+                              ),
                             ),
                           ),
                         ),
@@ -229,23 +241,80 @@ class _HomePageState extends State<HomePage> {
                               return Container(); // Default case if no state is available
                             }
                           },
-                        )
+                        ),
+                        SizedBox(
+                          height: 50,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                CircleAvatar(
+                                  radius: 100,
+                                  backgroundColor: AppColors.primaryColor.withOpacity(0.05),
+                                ),
+                                CircleAvatar(
+                                  radius: 80,
+                                  backgroundColor: AppColors.primaryColor.withOpacity(0.1),
+                                ),
+                                CircleAvatar(
+                                  radius: 60,
+                                  backgroundColor: AppColors.primaryColor.withOpacity(0.2),
+                                ),
+                                CircleAvatar(
+                                  radius: 60,
+                                  backgroundColor: AppColors.primaryColor,
+                                  child: const Icon(
+                                    Icons.mic,
+                                    color: Colors.white,
+                                    size: 60,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 50),
+                            // Upload File Button
+                            ElevatedButton.icon(
+                              onPressed: () {
+                                // TODO lakukan sesuatu
+                              },
+                              icon: const Icon(
+                                Icons.music_note,
+                                color: AppColors.primaryColor,
+                              ),
+                              label: const Text(
+                                'Upload File',
+                                style: TextStyle(color: AppColors.primaryColor, fontWeight: FontWeight.bold),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                side: const BorderSide(color: AppColors.primaryColor),
+                                backgroundColor: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
                     )
                   ],
                 ),
               )),
             )),
-            floatingActionButton: FloatingActionButton(
-              onPressed: () {
-                context.read<AuthBloc>().add(AuthEventLogout());
-              },
-              backgroundColor: AppColors.primaryColor,
-              child: Icon(
-                Icons.logout_outlined,
-                color: AppColors.textWhiteLightTheme,
-              ),
-            ),
+            // floatingActionButton: FloatingActionButton(
+            //   onPressed: () {
+            //     context.read<AuthBloc>().add(AuthEventLogout());
+            //   },
+            //   backgroundColor: AppColors.primaryColor,
+            //   child: Icon(
+            //     Icons.logout_outlined,
+            //     color: AppColors.textWhiteLightTheme,
+            //   ),
+            // ),
           ),
         ),
       ),

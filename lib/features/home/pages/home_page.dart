@@ -1,4 +1,6 @@
 // ignore_for_file: prefer_const_constructors
+import 'dart:io';
+
 import 'package:dicoding_voiceapp/core/app_color.dart';
 import 'package:dicoding_voiceapp/features/auth/bloc/auth_bloc.dart';
 import 'package:dicoding_voiceapp/features/home/bloc/home_bloc.dart';
@@ -70,7 +72,7 @@ class _HomePageState extends State<HomePage> {
               color: AppColors.surfaceColor,
               child: SingleChildScrollView(
                   child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: MediaQuery.viewPaddingOf(context).top),
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: Platform.isAndroid ? MediaQuery.viewPaddingOf(context).top : 10),
                 child: Column(
                   children: [
                     // Menu and Profile

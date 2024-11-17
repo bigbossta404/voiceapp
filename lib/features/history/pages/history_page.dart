@@ -1,4 +1,6 @@
 // ignore_for_file: prefer_const_constructors
+import 'dart:io';
+
 import 'package:dicoding_voiceapp/core/app_color.dart';
 import 'package:dicoding_voiceapp/features/history/bloc/history_bloc.dart';
 import 'package:dicoding_voiceapp/features/history/widgets/filter_button.dart';
@@ -63,7 +65,7 @@ class _HistoryPageState extends State<HistoryPage> {
             color: AppColors.surfaceColor,
             child: SingleChildScrollView(
                 child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: MediaQuery.viewPaddingOf(context).top),
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: Platform.isAndroid ? MediaQuery.viewPaddingOf(context).top : 10),
               child: Column(
                 children: [
                   // Menu and Profile
